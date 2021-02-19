@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import React, { useState } from "react";
+import { Footer } from "./components/Footer/Footer";
+import { GameField } from "./components/GameField/GameField";
+import { Score } from "./components/Score/Score";
+import { Game } from "./components/Game/Game";
 
 function App() {
+  const [game, setGame] = useState(false);
+  const [choose, setChoose] = useState("");
+  const [timer, setTimer] = useState(true);
+
+  const timerHandler = () => {
+    
+    setTimer(!timer)
+    console.log(timer)
+  }
+
+  const gameHandler = (type) => {
+    console.log(type);
+    setChoose(type);
+    setGame(!game);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Score />
+      {game ? (
+        <Game changeGame={gameHandler} time={timer} timer={timerHandler} choose={choose} />
+      ) : (
+        <GameField changeGame={gameHandler} />
+      )}
+
+      <Footer />
     </div>
   );
 }

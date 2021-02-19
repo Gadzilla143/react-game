@@ -1,0 +1,23 @@
+.game-field {
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+.type {
+    width: 134px;
+    height: 134px;
+    border-radius: 100px;
+    border: 15px solid;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.type:hover {
+    transform: scale(1.3);
+}
