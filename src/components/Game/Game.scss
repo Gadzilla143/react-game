@@ -31,7 +31,7 @@
 }
 
 .result {
-  height: 300px;
+  height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,10 +39,17 @@
 }
 
 .choice {
-  height: 200px;
-  font-size: 15pt;
+  height: 230px;
+  font-size: 18pt;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.judge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36pt;
 }

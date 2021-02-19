@@ -6,7 +6,6 @@ import scissors from '../../assets/scissors.svg'
 
 export const GameField = (props) => {
 
-
     return (
         <div className="game-field">
             <div

@@ -11,13 +11,10 @@ function App() {
   const [timer, setTimer] = useState(true);
 
   const timerHandler = () => {
-    
     setTimer(!timer)
-    console.log(timer)
   }
 
   const gameHandler = (type) => {
-    console.log(type);
     setChoose(type);
     setGame(!game);
   };
@@ -30,7 +27,6 @@ function App() {
       ) : (
         <GameField changeGame={gameHandler} />
       )}
-
       <Footer />
     </div>
   );
