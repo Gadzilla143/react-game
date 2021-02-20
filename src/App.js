@@ -9,11 +9,20 @@ function App() {
   const [game, setGame] = useState(false);
   const [choose, setChoose] = useState("");
   const [timer, setTimer] = useState(true);
+  const [score, setScore] = useState(0);
 
   const timerHandler = () => {
-    setTimer(!timer)
-  }
+    setTimer(!timer);
+  };
 
+  const scoreHandler = (change) => {
+    if (change === "YOU WIN") {
+      setScore(score + 1)
+    } else if (change === "YOU LOSE") {
+      setScore(score - 1)
+    }
+
+  }
   const gameHandler = (type) => {
     setChoose(type);
     setGame(!game);
@@ -21,9 +30,15 @@ function App() {
 
   return (
     <div className="App">
-      <Score />
+      <Score score={score} />
       {game ? (
-        <Game changeGame={gameHandler} time={timer} timer={timerHandler} choose={choose} />
+        <Game
+          changeScore={scoreHandler}
+          changeGame={gameHandler}
+          time={timer}
+          timer={timerHandler}
+          choose={choose}
+        />
       ) : (
         <GameField changeGame={gameHandler} />
       )}

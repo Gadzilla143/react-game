@@ -24,9 +24,12 @@ export const Game = (props) => {
             color: 'rgb(226, 72, 97)'
         }
     ]
+
+
     const [path, setPath] = useState('')
     const [color, setColor] = useState('rgb(226, 72, 97)')
     const [comp, setComp] = useState(0)
+
 
     const changePath = (src) => {
         switch (src) {
@@ -58,8 +61,8 @@ export const Game = (props) => {
                             props.timer()
                             changePath(props.choose)
                             setComp(Math.floor(Math.random() * (2 - 0)) + 0)
-
-                            return [false, 1000] // repeat animation in 1.5 seconds
+                            //props.changeScore(judge(props.choose, computerChoice[comp].name))
+                            return [false, 1000] 
                         }}
                         isPlaying
                         duration={3}
@@ -85,7 +88,7 @@ export const Game = (props) => {
                                         borderColor: color
                                     }}
                                 >
-                                    <img src={path} alt={props.choose}/>
+                                    <img src={path} alt={props.choose} />
                                 </div>
                             </div>
                             <div className="choice">
@@ -96,13 +99,21 @@ export const Game = (props) => {
                                         borderColor: computerChoice[comp].color
                                     }}
                                 >
-                                    <img src={computerChoice[comp].src} alt={computerChoice[comp].name}/>
+                                    <img src={computerChoice[comp].src} alt={computerChoice[comp].name} />
                                 </div>
                             </div>
                         </div>
 
 
-                        <div onClick={() => { props.changeGame("start"); props.timer() }} className="play-button"><b>PLAY AGAIN</b></div>
+                        <div
+                            onClick={() => {
+                                props.changeGame("start");
+                                props.timer();
+                                props.changeScore(judge(props.choose, computerChoice[comp].name));
+                            }}
+                            className="play-button">
+                            <b>SURE</b>
+                        </div>
 
                     </div>
                 )
