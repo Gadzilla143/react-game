@@ -11,7 +11,8 @@ export const GameField = (props) => {
             <div
                 className="type"
                 onClick={() => {
-                    props.changeGame("hand")
+                    props.clickPlay();
+                    props.changeGame("hand");
                 }}
                 style={{
                     borderColor: 'rgb(78, 78, 231)'
@@ -21,7 +22,10 @@ export const GameField = (props) => {
 
             <div
                 className="type"
-                onClick={() => props.changeGame("rock")}
+                onClick={() => {
+                    props.changeGame("rock");
+                    props.clickPlay();
+                }}
                 style={{
                     borderColor: 'rgb(226, 72, 97)'
                 }}>
@@ -30,7 +34,10 @@ export const GameField = (props) => {
 
             <div
                 className="type"
-                onClick={() => props.changeGame("scissors")}
+                onClick={() => {
+                    props.changeGame("scissors");
+                    props.clickPlay();
+                }}
                 style={{
                     borderColor: 'rgb(226, 198, 72)'
                 }}>

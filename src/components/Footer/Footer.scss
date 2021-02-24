@@ -4,4 +4,14 @@
   font-family: "Big Shoulders Display", cursive;
   letter-spacing: 5px;
   font-size: 15pt;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  .setting{
+    transition: .3s;
+    cursor: pointer;
+  }
+  .setting:hover{
+    transform: scale(1.5);
+  }
 }

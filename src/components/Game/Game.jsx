@@ -30,7 +30,6 @@ export const Game = (props) => {
     const [color, setColor] = useState('rgb(226, 72, 97)')
     const [comp, setComp] = useState(0)
 
-
     const changePath = (src) => {
         switch (src) {
             case "hand":
@@ -58,6 +57,7 @@ export const Game = (props) => {
                 (
                     <CountdownCircleTimer
                         onComplete={() => {
+                            props.Play()
                             props.timer()
                             changePath(props.choose)
                             setComp(Math.floor(Math.random() * (2 - 0)) + 0)
@@ -107,6 +107,7 @@ export const Game = (props) => {
 
                         <div
                             onClick={() => {
+                                props.clickPlay();
                                 props.changeGame("start");
                                 props.timer();
                                 props.changeScore(judge(props.choose, computerChoice[comp].name));
