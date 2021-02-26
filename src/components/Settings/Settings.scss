@@ -19,13 +19,18 @@
 }
 
 .settings__content {
-    padding: 20px;
+    
+    padding: 30px;
+    
     border-radius: 12px;
     background-color: white;
-    height: 500px;
+    height: 320px;
     width: 400px;
     transform: scale(0);
     transition: .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .settings__content.active  { 
@@ -34,6 +39,13 @@
 
 .settings__fx {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     cursor: pointer;
+}
+
+.settings__cntrl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
 }

@@ -69,7 +69,7 @@ export const Game = (props) => {
                             return [false, 1000] 
                         }}
                         isPlaying
-                        duration={3}
+                        duration={props.duration}
                         colors={[
                             ['#004799', 0.33],
                             ['#F7B801', 0.33],

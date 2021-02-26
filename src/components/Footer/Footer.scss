@@ -7,11 +7,20 @@
   width: 100vw;
   display: flex;
   justify-content: space-around;
-  .setting{
+  .setting {
     transition: .3s;
     cursor: pointer;
   }
-  .setting:hover{
+  .setting:hover {
     transform: scale(1.5);
   }
+}
+
+.footer__link {
+  cursor: pointer;
+  transition: .4s;
+}
+
+.footer__link:hover {
+  transform: scale(1.3);
 }

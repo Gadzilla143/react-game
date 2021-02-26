@@ -3,7 +3,7 @@ import './Score.scss'
 export const Score = (props) => {
     return (
         <div className="container Container" style={{
-            width: '600px',
+            width: `${props.size}px`,
         }}>
             <div><b>ROCK<br /> PAPPER<br /> SCISSORS</b></div>
 

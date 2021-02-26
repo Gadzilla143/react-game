@@ -22,6 +22,8 @@ function App() {
   const [timer, setTimer] = useState(true);
   const [score, setScore] = useState(0);
   const [color, setColor] = useState("#182b52");
+  const [timerDuration, setTimerDuration] = useState(3)
+  const [scoreBoardSize, setScoreBoardSize] = useState(600)
 
   const clickPlay = () => {
     const sound = new Howl({
@@ -82,9 +84,14 @@ function App() {
         backgroundColor: color,
       }}
     >
-      <Score score={score} />
+      <Score 
+        size={scoreBoardSize}
+
+        score={score}
+      />
       {game ? (
         <Game
+          duration={timerDuration}
           Play={Play}
           clickPlay={clickPlay}
           changeScore={scoreHandler}
@@ -97,12 +104,17 @@ function App() {
         <GameField clickPlay={clickPlay} changeGame={gameHandler} />
       )}
       <Footer
-        color={color}
-        setColor={setColor}
+        
         clickPlay={clickPlay}
         setActive={setSettingsActive}
       />
       <Settings
+        size={scoreBoardSize}
+        setSize={setScoreBoardSize}
+        color={color}
+        setColor={setColor}
+        duration={timerDuration}
+        setDuration={setTimerDuration}
         setLoopVolume={setLoopVolume}
         loopVolume={loopVolume}
         stop={loopPlay}
