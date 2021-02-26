@@ -9,23 +9,30 @@ import AddIcon from '@material-ui/icons/Add';
 import SlowMotionVideoIcon from '@material-ui/icons/SlowMotionVideo';
 import RemoveIcon from '@material-ui/icons/Remove';
 
-export const Settings = ({active, setActive, mute, setMute, volume, setVolume, stop}) => {
+export const Settings = ({active, setActive, mute, setMute, volume, setVolume, stop, setLoopVolume, loopVolume}) => {
     const [sound, setSound] = useState(true)
     
 
     return (
         <div className={active ? "settings active " : "settings"} onClick={() => setActive(false)}>
             <div className={active ? "settings__content active" : "settings__content"} onClick={e => e.stopPropagation()}>
-                <div className="btn">
+                <div className="settings__fx">
                     Sound FX
                     {sound ? <VolumeDownIcon onClick={() => {setMute(!mute); setSound(!sound)}}/> : <VolumeOffIcon onClick={() => {setMute(!mute); setSound(!sound)}} />}
-                    <AddIcon onClick={() => {if (volume < 1) {setVolume(Math.round((volume + 0.1)*10)/10)}}}/>
-                    {volume}
-                    <RemoveIcon onClick={() => {if (volume > 0.1)setVolume(Math.round((volume - 0.1)*10)/10)}}/>
+                    <div>
+                        <AddIcon onClick={() => {if (volume < 1) {setVolume(Math.round((volume + 0.1)*10)/10)}}}/>
+                        {volume}
+                        <RemoveIcon onClick={() => {if (volume > 0.1)setVolume(Math.round((volume - 0.1)*10)/10)}}/>
+                    </div>
                 </div>
-                <div>
+                <div className="settings__fx">
                     Play Music 
                     <SlowMotionVideoIcon onClick={() => stop()}/>
+                    <div>
+                        <AddIcon onClick={() => {if (loopVolume < 1) {setLoopVolume(Math.round((loopVolume + 0.1)*10)/10)}}}/>
+                        {loopVolume}
+                        <RemoveIcon onClick={() => {if (loopVolume > 0.1)setLoopVolume(Math.round((loopVolume - 0.1)*10)/10)}}/>
+                    </div>
                 </div>
             </div>
         </div>

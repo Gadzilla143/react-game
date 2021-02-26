@@ -6,6 +6,7 @@ import rock from '../../assets/rock.svg';
 import scissors from '../../assets/scissors.svg';
 import { judge } from '../../servieces/judge';
 
+
 export const Game = (props) => {
     const computerChoice = [
         {
@@ -28,7 +29,9 @@ export const Game = (props) => {
 
     const [path, setPath] = useState('')
     const [color, setColor] = useState('rgb(226, 72, 97)')
-    const [comp, setComp] = useState(0)
+    const [comp, setComp] = useState(0);
+
+
 
     const changePath = (src) => {
         switch (src) {
@@ -57,11 +60,12 @@ export const Game = (props) => {
                 (
                     <CountdownCircleTimer
                         onComplete={() => {
-                            props.Play()
                             props.timer()
                             changePath(props.choose)
-                            setComp(Math.floor(Math.random() * (2 - 0)) + 0)
-                            //props.changeScore(judge(props.choose, computerChoice[comp].name))
+                            const compAns = Math.floor(Math.random() * (2 - 0)) + 0
+                            setComp(compAns)
+                            props.changeScore(judge(props.choose, computerChoice[compAns].name))
+                            props.Play(judge(props.choose, computerChoice[compAns].name))
                             return [false, 1000] 
                         }}
                         isPlaying
@@ -71,7 +75,9 @@ export const Game = (props) => {
                             ['#F7B801', 0.33],
                             ['#A31000', 0.33],
                         ]}
-                    >{({ remainingTime }) => remainingTime}</CountdownCircleTimer>
+                    >
+                        {({ remainingTime }) => remainingTime}
+                    </CountdownCircleTimer>
                 )
                 :
                 (
@@ -110,7 +116,7 @@ export const Game = (props) => {
                                 props.clickPlay();
                                 props.changeGame("start");
                                 props.timer();
-                                props.changeScore(judge(props.choose, computerChoice[comp].name));
+                                //props.changeScore(judge(props.choose, computerChoice[comp].name));
                             }}
                             className="play-button">
                             <b>SURE</b>

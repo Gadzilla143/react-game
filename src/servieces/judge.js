@@ -22,3 +22,17 @@ export const judge = (user, comp) => {
     }
   }
 };
+
+//замени слова "scissors", "hand" на числа и сравнивай числа в switch как здесь
+//это будет в 4 раза меньше и понятней
+
+// const lol = (userNum, compNum) => {
+//   switch(true) {
+//     case userNum === compNum:
+//       return 'DRAW'
+//     case userNum < compNum:
+//       return 'YOU LOSE'
+//     default:
+//       return 'YOU WIN'
+//   }
+// }

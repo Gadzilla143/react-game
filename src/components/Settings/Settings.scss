@@ -32,6 +32,8 @@
     transform: scale(1);
 }
 
-.btn {
+.settings__fx {
+    display: flex;
+    justify-content: space-around;
     cursor: pointer;
 }
