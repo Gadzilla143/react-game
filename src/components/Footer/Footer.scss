@@ -1,0 +1,26 @@
+.footer {
+  padding-bottom: -22px;
+  color: white;
+  font-family: "Big Shoulders Display", cursive;
+  letter-spacing: 5px;
+  font-size: 15pt;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  .setting {
+    transition: .3s;
+    cursor: pointer;
+  }
+  .setting:hover {
+    transform: scale(1.5);
+  }
+}
+
+.footer__link {
+  cursor: pointer;
+  transition: .4s;
+}
+
+.footer__link:hover {
+  transform: scale(1.3);
+}
