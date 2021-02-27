@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Game.scss'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import hand from '../../assets/hand.svg';
@@ -31,7 +31,21 @@ export const Game = (props) => {
     const [color, setColor] = useState('rgb(226, 72, 97)')
     const [comp, setComp] = useState(0);
 
+    useEffect(() => {
+        const onKeypress = e => {
+            if (e.key === ' ') {
+                props.clickPlay();
+                props.changeGame("start");
+                props.timer();
+            }
+        };
 
+        document.addEventListener('keypress', onKeypress);
+
+        return () => {
+            document.removeEventListener('keypress', onKeypress);
+        };
+    }, [props]);
 
     const changePath = (src) => {
         switch (src) {
@@ -65,8 +79,9 @@ export const Game = (props) => {
                             const compAns = Math.floor(Math.random() * (2 - 0)) + 0
                             setComp(compAns)
                             props.changeScore(judge(props.choose, computerChoice[compAns].name))
-                            props.Play(judge(props.choose, computerChoice[compAns].name))
-                            return [false, 1000] 
+                            props.Play(judge(props.choose, computerChoice[compAns].name), props.choose, computerChoice[compAns].name)
+
+                            return [false, 1000]
                         }}
                         isPlaying
                         duration={props.duration}
@@ -116,10 +131,11 @@ export const Game = (props) => {
                                 props.clickPlay();
                                 props.changeGame("start");
                                 props.timer();
+
                                 //props.changeScore(judge(props.choose, computerChoice[comp].name));
                             }}
                             className="play-button">
-                            <b>SURE</b>
+                            <b>PLAY AGAIN</b>
                         </div>
 
                     </div>

@@ -1,4 +1,7 @@
 .settings {
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 17pt;
+    letter-spacing: 2px;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.411);
@@ -24,8 +27,8 @@
     
     border-radius: 12px;
     background-color: white;
-    height: 320px;
-    width: 400px;
+    height: 520px;
+    width: 450px;
     transform: scale(0);
     transition: .5s;
     display: flex;
@@ -48,4 +51,27 @@
     justify-content: space-between;
     align-items: center;
     width: 80px;
+}
+
+.settings__manual {
+    background-color: rgba(175, 173, 173, 0.486);
+    height: 200px;
+    border-radius: 12px;
+}
+
+.settings__title {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual {
+    margin-top: 12px;
+    
+}
+p {
+    letter-spacing: 1px;
+    
+    font-size: 16pt;
+    padding: 0 20px;
 }

@@ -11,19 +11,24 @@ import lose from "./assets/sound/lose.mp3";
 import loop from "./assets/sound/loop.mp3";
 import draw from "./assets/sound/draw.mp3";
 import { Howl } from "howler";
+import { Stats } from "./components/Stats/Stats";
 
 function App() {
   const [settingsActive, setSettingsActive] = useState(false);
+  const [statsActive, setStatsActive] = useState(false)
   const [volume, setVolume] = useState(0.1);
   const [loopVolume, setLoopVolume] = useState(0.1);
   const [mute, setMute] = useState(false);
   const [game, setGame] = useState(false);
   const [choose, setChoose] = useState("");
   const [timer, setTimer] = useState(true);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(Number.parseInt(localStorage.getItem('counter')) || 0);
   const [color, setColor] = useState("#182b52");
   const [timerDuration, setTimerDuration] = useState(3)
   const [scoreBoardSize, setScoreBoardSize] = useState(600)
+  const [stats, setStats] = useState([])
+
+  
 
   const clickPlay = () => {
     const sound = new Howl({
@@ -34,8 +39,9 @@ function App() {
       sound.play();
     }
   };
-  const Play = (judge) => {
+  const Play = (judge, user, comp) => {
     let snd;
+    
     if (judge === "YOU WIN") {
       snd = win;
     } else if (judge === "YOU LOSE") {
@@ -43,6 +49,11 @@ function App() {
     } else {
       snd = draw;
     }
+    setStats(stats.concat({
+      user,
+      comp,
+      judge
+    }))
     const sound = new Howl({
       src: snd,
       volume: volume,
@@ -68,9 +79,12 @@ function App() {
   const scoreHandler = (change) => {
     if (change === "YOU WIN") {
       setScore(score + 1);
+      localStorage.setItem('counter', Number.parseInt(score) + 1);
     } else if (change === "YOU LOSE") {
       setScore(score - 1);
+      localStorage.setItem('counter', Number.parseInt(score) - 1);
     }
+    
   };
   const gameHandler = (type) => {
     setChoose(type);
@@ -91,6 +105,8 @@ function App() {
       />
       {game ? (
         <Game
+          
+          score={score}
           duration={timerDuration}
           Play={Play}
           clickPlay={clickPlay}
@@ -101,13 +117,21 @@ function App() {
           choose={choose}
         />
       ) : (
-        <GameField clickPlay={clickPlay} changeGame={gameHandler} />
-      )}
-      <Footer
+        <GameField 
+          setScore={setScore}
+          score={score}
+          clickPlay={clickPlay} 
+          changeGame={gameHandler}
+        />
         
+      )}
+      
+      <Footer
         clickPlay={clickPlay}
         setActive={setSettingsActive}
+        statsActive={setStatsActive}
       />
+      
       <Settings
         size={scoreBoardSize}
         setSize={setScoreBoardSize}
@@ -124,6 +148,11 @@ function App() {
         mute={mute}
         active={settingsActive}
         setActive={setSettingsActive}
+      />
+      <Stats
+        stats={stats}
+        active={statsActive}
+        setActive={setStatsActive}
       />
     </div>
   );

@@ -33,6 +33,7 @@ export const Settings = ({
     return (
         <div className={active ? "settings active " : "settings"} onClick={() => setActive(false)}>
             <div className={active ? "settings__content active" : "settings__content"} onClick={e => e.stopPropagation()}>
+                <div className="settings__title"><b>OPTIONS</b></div>
                 <div className="settings__fx">
                     Sound FX
                     {sound ? <VolumeDownIcon onClick={() => {setMute(!mute); setSound(!sound)}}/> : <VolumeOffIcon onClick={() => {setMute(!mute); setSound(!sound)}} />}
@@ -82,8 +83,15 @@ export const Settings = ({
                         onChange={e => setSize(e.target.value)}
                     />
                 </div>
-                
-
+                <div className="settings__manual">
+                    <div className="settings__title manual">MANUAL</div>
+                    <p>
+                        To choose hand, rock or scissors press 1, 2 or 3 accordingly 
+                    </p>
+                    <p>
+                        Space: Play Again, Enter: New Game
+                    </p>
+                </div>
             </div>
         </div>
     )
